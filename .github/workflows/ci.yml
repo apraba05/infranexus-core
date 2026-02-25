@@ -31,8 +31,7 @@ jobs:
       run: npm install
 
     - name: Generate Prisma Client
-      working-directory: ./frontend
-      run: npx prisma generate
+      run: npx prisma generate --schema=prisma/schema.prisma
 
     # - name: Run Linter
     #   run: |
