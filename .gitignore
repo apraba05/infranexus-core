@@ -10,7 +10,7 @@ out/
 .env
 .env.*
 !.env.example
-!.env.production
+!.env.*.example
 
 # misc
 .DS_Store

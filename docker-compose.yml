@@ -28,12 +28,29 @@ services:
     environment:
       DATABASE_URL: "postgresql://${POSTGRES_USER:-vmide}:${POSTGRES_PASSWORD:-vmide_secret}@db:5432/${POSTGRES_DB:-vmide}?schema=public"
       NEXTAUTH_URL: ${NEXTAUTH_URL:-http://localhost:3000}
-      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET:-default_secret_please_change}
       GITHUB_CLIENT_ID: ${GITHUB_CLIENT_ID:-}
       GITHUB_CLIENT_SECRET: ${GITHUB_CLIENT_SECRET:-}
       STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY:-}
       STRIPE_WEBHOOK_SECRET: ${STRIPE_WEBHOOK_SECRET:-}
       NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:-}
+    depends_on:
+      db:
+        condition: service_healthy
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+    environment:
+      PORT: "4000"
+      DATABASE_URL: "postgresql://${POSTGRES_USER:-vmide}:${POSTGRES_PASSWORD:-vmide_secret}@db:5432/${POSTGRES_DB:-vmide}?schema=public"
+      FRONTEND_ORIGIN: ${NEXTAUTH_URL:-http://localhost:3000}
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET:-default_secret_please_change}
+      AUTH_ENABLED: "true"
     depends_on:
       db:
         condition: service_healthy
