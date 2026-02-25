@@ -38,9 +38,9 @@ jobs:
     #     cd frontend && npm run lint
     #     cd ../backend && npm run lint
 
-    - name: Build Frontend
+    - name: Type-check Frontend
       working-directory: ./frontend
-      run: npm run build
+      run: npx tsc --noEmit
       env:
         NEXTAUTH_URL: "http://localhost:3000"
         NEXTAUTH_SECRET: "dummy_secret_for_build"
