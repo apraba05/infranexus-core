@@ -2,7 +2,7 @@
 
 **IDE for Virtual Machines** - A powerful, web-based integrated development environment specifically designed for managing, accessing, and developing on virtual machines.
 
-![InfraNexus Video](https://youtu.be/_Z-TCQM30L0)
+<iframe width="560" height="315" src="https://youtu.be/_Z-TCQM30L0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Features
 
