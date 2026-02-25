@@ -33,6 +33,10 @@ jobs:
       working-directory: ./backend
       run: npm install
 
+    - name: Generate Prisma Client for Frontend
+      working-directory: ./frontend
+      run: ../node_modules/.bin/prisma generate --schema=../prisma/schema.prisma
+
     # - name: Run Linter
     #   run: |
     #     cd frontend && npm run lint
