@@ -35,7 +35,7 @@ jobs:
 
     - name: Generate Prisma Client for Frontend
       working-directory: ./frontend
-      run: npx prisma generate --schema=../prisma/schema.prisma
+      run: ../node_modules/.bin/prisma generate --schema=../prisma/schema.prisma
 
     # - name: Run Linter
     #   run: |
