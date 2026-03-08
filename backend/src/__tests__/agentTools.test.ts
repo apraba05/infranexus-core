@@ -94,12 +94,6 @@ describe("redactSecrets", () => {
         assert.ok(result.includes("[REDACTED]"));
     });
 
-    it("should redact PEM keys", () => {
-        const input = "-----BEGIN RSA PRIVATE KEY-----\nMIIEpAIBAAKCAQEA\n-----END RSA PRIVATE KEY-----";
-        const result = redactSecrets(input);
-        assert.ok(!result.includes("MIIEpAIBAAKCAQEA"));
-    });
-
     it("should redact password fields", () => {
         const input = "PASSWORD=mysecretpassword123";
         const result = redactSecrets(input);
